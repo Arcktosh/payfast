@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Image from "next/image"
-import generateSignature from "../snippets/generateSignature"
 import styles from "../styles/Home.module.css"
+import generateSignature from "../snippets/generateSignature"
 
 export default function Home() {
   const testingMode = process.env.NEXT_PUBLIC_TEST
@@ -15,16 +15,16 @@ export default function Home() {
     merchant_key: process.env.NEXT_PUBLIC_MERCHANT_KEY,
     return_url: `${process.env.NEXT_PUBLIC_DOMAIN}/success`,
     cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/cancel`,
-    notify_url: `${process.env.NEXT_PUBLIC_DOMAIN}/notify`,
+    notify_url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/register`,
     // Buyer details
     // name_last string, 100 char | OPTIONAL
     name_first: "John",
     // name_last string, 100 char | OPTIONAL
     name_last: "Doe",
     // email_address string, 100 char | OPTIONAL
-    email_address: "john@doe.com",
+    email_address: "benhenning10@gmail.com",
     // cell_number string, 100 char | OPTIONAL
-    cell_number: "0823456789",
+    cell_number: "0638022173",
     // m_payment_id string, 100 char | OPTIONAL
     m_payment_id: "01AB",
     // amount decimal | REQUIRED
@@ -40,7 +40,7 @@ export default function Home() {
     //email_confirmation boolean, 1 char | OPTIONAL */}
     email_confirmation: "1",
     //confirmation_address string, 100 char | OPTIONAL */}
-    confirmation_address: "john@doe.com",
+    confirmation_address: "benhenning10@gmail.com",
     // payment_method string, 3 char | OPTIONAL
     //     'eft' - EFT
     //     'cc' - Credit card
@@ -68,9 +68,7 @@ export default function Home() {
     cycles: 12,
   }
   data["signature"] = generateSignature(data)
-
-  // If in testing mode make use of either sandbox.payfast.co.za or www.payfast.co.za
-
+  //TODO: save data to db
   return (
     <div className={styles.container}>
       <Head>
